@@ -53,6 +53,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "core.urls"
 
+AUTH_USER_MODEL = 'transit.User'
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
