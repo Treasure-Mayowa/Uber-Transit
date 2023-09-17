@@ -12,6 +12,8 @@ from django.views.decorators.csrf import csrf_exempt
 def index(request):
     return HttpResponse("Transit")
 
+
+
 def login_view(request):
     if request.method == "POST":
 
@@ -25,11 +27,11 @@ def login_view(request):
             login(request, user)
             return HttpResponseRedirect(reverse("index"))
         else:
-            return render(request, "news_suite/login.html", {
+            return render(request, "transit/login.html", {
                 "message": "Invalid username and/or password."
             })
     else:
-        return render(request, "news_suite/login.html")
+        return render(request, "transit/login.html")
 
 
 def logout_view(request):
@@ -46,7 +48,7 @@ def register(request):
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
         if password != confirmation:
-            return render(request, "news_suite/register.html", {
+            return render(request, "transit/register.html", {
                 "message": "Passwords must match."
             })
 
@@ -55,14 +57,14 @@ def register(request):
             user = User.objects.create_user(username, email, password)
             user.save()
         except IntegrityError:
-            return render(request, "news_suite/register.html", {
+            return render(request, "transit/register.html", {
                 "message": "Username already taken."
             })
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
     else:
-        return render(request, "news_suite/register.html")
+        return render(request, "transit/register.html")
 
-        
+
 def custom_404(request):
-    return render(request, "news_suite/404.html", status=404)
+    return render(request, "transit/404.html", status=404)
