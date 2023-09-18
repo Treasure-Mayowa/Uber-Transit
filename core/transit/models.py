@@ -5,3 +5,11 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     pass
     
+class Driver(models.Model):
+    pass
+
+class Location(models.Model):
+    pass
+
+class Transit(models.Model):
+    pass
