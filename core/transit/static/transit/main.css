@@ -1,0 +1,21 @@
+#second {
+    background-image: url(bg-image.png);
+    padding: 24px;
+    position: absolute;
+    width: 100%;
+}
+
+#third {
+    padding: 24px;
+    position: absolute;
+    width: 100%;
+}
+
+#other {
+    background-color: white;
+    position: relative;
+    left: 0;
+    padding: 5px;
+    border-radius: 2px;
+    width:20%;
+}
