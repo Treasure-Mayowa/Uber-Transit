@@ -1,1 +1,13 @@
-// User login page here 
+{% if message %}
+    {{ message }}
+{% endif %}
+
+
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <label>Username</label>
+    <input type="text" required name="username" />
+    <label>Password</label>
+    <input type="text" required name="password" />
+    <button type="submit">Log In</button>
+</form>
