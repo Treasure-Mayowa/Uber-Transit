@@ -1,0 +1,15 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'transit/main.css' %}" />
+    </head>
+    <body>
+        <nav>
+            Signed in as {{ user.username }}
+        </nav>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>
