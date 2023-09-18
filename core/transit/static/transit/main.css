@@ -1,20 +1,13 @@
 #second {
-    background-image: url(bg-image.png);
-    padding: 24px;
-    position: absolute;
+    background-image: url(bg-image-i.png);
     width: 100%;
-}
-
-#third {
-    padding: 24px;
-    position: absolute;
-    width: 100%;
+    padding-bottom: 100px;
 }
 
 #other {
     background-color: white;
     position: relative;
-    left: 0;
+    right: 0;
     padding: 5px;
     border-radius: 2px;
     width:20%;
