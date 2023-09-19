@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.conf  import settings
 
 from .models import *
 
@@ -14,9 +15,19 @@ from .models import *
 def index(request):
     return render(request, "transit/index.html")
 
-
+@login_required
 def dashboard(request):
-    return render(request, "transit/dashboard.html")
+    if request.method == "POST":
+        start = request.POST["start"]
+        destination = request.POST["destination"]
+        return render(request, "transit/dashboard.html")
+    
+    else:
+        transits = Transit.objects.all()
+        transits = [i.name for i in transits]
+        return render(request, "transit/dashboard.html", {
+            "transits": transits
+        })
 
 
 def login_view(request):
@@ -52,14 +63,17 @@ def register(request):
         # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
+        latitude = request.POST["lat"]
+        longitude = request.POST["long"]
         if password != confirmation:
             return render(request, "transit/register.html", {
                 "message": "Passwords must match."
             })
-
+        new_location = Location(latitude=latitude, longitude=longitude)
+        new_location.save()
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username, email, password)
+            user = User.objects.create_user(username=username, email=email, password=password, location=new_location)
             user.save()
         except IntegrityError:
             return render(request, "transit/register.html", {
