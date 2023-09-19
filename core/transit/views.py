@@ -10,8 +10,11 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Transit")
+    return render(request, "transit/index.html")
 
+
+def dashboard(request):
+    return render(request, "transit/dashboard.html")
 
 
 def login_view(request):
