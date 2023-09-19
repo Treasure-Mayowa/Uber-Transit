@@ -29,7 +29,7 @@
             <input type="password" required name="password">
             <label>Confirm Password</label>
             <input type="password" required name="confirmation">
-
+            <br>
             <label><strong>Location</strong></label>
             <br>
             <label>Latitude</label>
@@ -39,5 +39,6 @@
             <input type="number" required name="long" value="-0.001545" step="any">
             <button type="submit" class="shadow-sm btn btn-dark">Register</button>
         </form>
+        <p>Already registered? <a href="{% url 'login' %}">Log In</a></p>
     </body>
 </html>
