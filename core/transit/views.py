@@ -17,14 +17,16 @@ def index(request):
 
 @login_required
 def dashboard(request):
+    transits = Transit.objects.all()
+    transits = [i.name for i in transits]
+
     if request.method == "POST":
         start = request.POST["start"]
         destination = request.POST["destination"]
-        return render(request, "transit/dashboard.html")
-    
+        return render(request, "transit/dashboard.html", {
+            "transits": transits
+        })
     else:
-        transits = Transit.objects.all()
-        transits = [i.name for i in transits]
         return render(request, "transit/dashboard.html", {
             "transits": transits
         })
@@ -41,7 +43,7 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            return HttpResponseRedirect(reverse("dashboard"))
         else:
             return render(request, "transit/login.html", {
                 "message": "Invalid username and/or password."
@@ -73,14 +75,15 @@ def register(request):
         new_location.save()
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username=username, email=email, password=password, location=new_location)
+            user = User.objects.create_user(username, email, password)
+            user.location = new_location
             user.save()
         except IntegrityError:
             return render(request, "transit/register.html", {
                 "message": "Username already taken."
             })
         login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("dashboard"))
     else:
         return render(request, "transit/register.html")
 
