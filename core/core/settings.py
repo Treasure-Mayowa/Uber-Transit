@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MAP_API_KEY = config("MAP_API_KEY")
 
 # Application definition
 
