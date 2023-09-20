@@ -18,9 +18,17 @@ class User(AbstractUser):
 class Driver(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     available_seats = models.IntegerField(default=0)
+    accessibility = models.TextField(default="Nil")
 
     def __str__(self):
         return f"{self.user.username} at {self.location}"
+    
+class Trips(models.Model):
+    passengers = models.ManyToManyField(User)
+    time = models.DateTimeField(auto_now_add=True)
+    duration = models.DurationField()
+    start = models.ForeignKey(Location, on_delete=models.CASCADE)
+    driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
 
 class Ride(models.Model):
     driver = models.ForeignKey(Driver, on_delete=models.CASCADE, related_name="rides")
