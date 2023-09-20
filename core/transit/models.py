@@ -20,3 +20,6 @@ class Transit(models.Model):
     name = models.CharField(max_length=150)
     location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="routes")
     transit_type = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.name} in {self.location} ({self.transit_type})"
