@@ -1,12 +1,19 @@
 {% extends 'transit/layout.html' %}
+{% load static %}
+
+{% block title %}
+Home - Uber Transit
+{% endblock title %}
+
 
 {% block body %}
 <div id="second">
     <div id="other">
         <p>An easy way to get around Uberland</p><br>
         <h4>Uber ridesharing that syncs with transit systems</h4><br>
-        <button>---></button>Put in your journey, get a ride, hop in and go.
+        <button class="btn">---></button>Put in your journey, get a ride, hop in and go.
     </div>
+    <img src="{% static "transit/bg-image-i.png" %}" alt="Woman in a car holding a phone looking out the window of the car" />
 </div>
 <br>
 
