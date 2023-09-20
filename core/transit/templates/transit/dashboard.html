@@ -3,16 +3,26 @@
 Plan Your Journey - Uber Transit
 {% endblock title %}
 {% block body %}
-<p>Signed in as {{ user.username }}</p>
 <h3>Plan your Journey</h3>
 <form id="journey" action="{% url 'dashboard' %}" autocomplete="off">
-    <div class="autocomplete">
-        <input type="text" placeholder="Enter your start location" required name="start" />
+    <content>
+        <div class="autocomplete">
+            <input type="text" placeholder="Enter your start location" required name="start" id="start" />
+        </div>
+        <button class="btn">Use current one</button>
+        <br><br>
+        <input type="text" placeholder="Where to?" required  name="destination"/>
+        <button class="btn" id="switch-btn">Switch to Longitude/Latitude input</button>
+        <button class="btn btn-secondary" type="submit">Enter</button>
+    </content>
+    <div class="sidebar">
+        <h4>Available Transit Stations</h4>
+        {% for transit in transits %}
+        {% if transits %}
+        {% else %}
+        Not Available
+        {% endif %}
+        {% endfor %}
     </div>
-    <button class="btn">Use current one</button>
-    <br><br>
-    <input type="text" placeholder="Where to?" required  name="destination"/>
-    <button class="btn">Switch to Longitude/Latitude input</button>
-    <button class="btn btn-secondary" type="submit">Enter</button>
 </form>
 {% endblock body %}
