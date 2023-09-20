@@ -1,16 +1,75 @@
-#second {
-    background-image: url(bg-image-i.png);
+@media only screen and (max-width: 600px) {
+  .button {
+    display: none;
+  }
+  .sidebar {
     width: 100%;
-    padding-bottom: 100px;
+    float: none;
+  }
+  content {
+    width: 100%;
+    float: none;
+  }
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont,"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+nav {
+  background-color: black;
+  display: flex;
+  color: white;
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.logo {
+  float: left;
+  margin-left: 2%;
+}
+
+.button {
+  margin: auto;
+  margin-left: 80%;
+  position: relative;
+  bottom: 0%;
+  padding: 1px 0;
+}
+
+.button button {
+  cursor: pointer;
+}
+
+content {
+  width: 50%;
+  float: left;
+}
+
+#second {
+  width: 100%;
+  padding-bottom: 100px;
+  background-color: beige;
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#second img {
+  width: 50%;
+  float: right;
+  position: relative;
+  top: 0;
 }
 
 #other {
-    background-color: white;
+    background-color: black;
     position: relative;
-    right: 0;
     padding: 5px;
     border-radius: 2px;
-    width:20%;
+    width:40%;
+    float: left;
+    margin-left: 2%;
+    color: white;
 }
 .autocomplete {
     /*the container must be positioned relative:*/
@@ -51,11 +110,40 @@
     border: none;
 }
 
-form {
-    margin: auto;
+.login {
+  margin: auto;
+  width: 60%;
+  padding: 10% 0%;
 }
+
+.signup {
+  margin: auto;
+  width: 60%;
+  padding: 10% 0%;
+}
+
+h1 {
+  color: white;
+  text-decoration: none;
+}
+
 form input {
     display: block;
-    width: 50%;
+    width: 90%;
     border-radius: 3px;
+    padding: 8px;
+}
+
+.sidebar {
+  float: right;
+  width: 40%;
+}
+
+form button {
+  width: 90%;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
 }
