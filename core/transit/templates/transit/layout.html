@@ -12,15 +12,16 @@
     <body>
         <nav>
             <div class="logo">
-                <h1>Uber Transit</h1>
+                <a href="{% url 'index' %}"><h1>Uber Transit</h1></a>
             </div>
             <div class="button">
-                <a href="{% url 'login' %}"><button class="btn btn-black shadow-sm">Log In</button></a>
-                <a href="{% url 'register' %}"><button class="btn btn-white rounded shadow-sm">Sign Up</button></a>
+                {% if user.username %} 
+                    <a href="{% url 'logout' %}"><button class="btn btn-black rounded shadow-sm">Log Out</button></a>
+                {% else %}
+                    <a href="{% url 'login' %}"><button class="btn btn-black shadow-sm">Log In</button></a>
+                    <a href="{% url 'register' %}"><button class="btn btn-white rounded shadow-sm">Sign Up</button></a>
+                {% endif %}
             </div>
-            {% if user.is_autheticated %}
-                Signed in as {{ user.username }}
-            {% endif %}
         </nav>
         <br>
         {% block body %}
