@@ -11,8 +11,9 @@ class Location(models.Model):
 
 
 class User(AbstractUser):
-    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="location")
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="location", default="null")
     driver = models.BooleanField(default=False)
+    seats = models.IntegerField(default=0)
     
 
 class Transit(models.Model):
