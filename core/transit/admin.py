@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(User)
 admin.site.register(Location)
 admin.site.register(Transit)
+admin.site.register(Driver)
