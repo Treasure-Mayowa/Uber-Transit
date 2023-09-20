@@ -11,7 +11,9 @@ Home - Uber Transit
     <div id="other">
         <p>An easy way to get around Uberland</p><br>
         <h4>Uber ridesharing that syncs with transit systems</h4><br>
-        <button class="btn">---></button>Put in your journey, get a ride, hop in and go.
+        <a href="{% url 'register' %}"><button class="btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>Put in your journey, get a ride, hop in and go.
+        <br><br><br>
+        <a href="{% url 'driver-register' %}"><button class="btn btn-light">Sign up as driver</button></a>
     </div>
     <img src="{% static "transit/bg-image-i.png" %}" alt="Woman in a car holding a phone looking out the window of the car" />
 </div>
