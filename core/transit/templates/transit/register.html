@@ -6,39 +6,41 @@
         <link rel="stylesheet" href="{% static 'transit/main.css' %}">
         <title>Register - Uber Transit</title>
     </head>
-    <body> 
-        {% if message %}
-            {{ message }}
-        {% endif %}
-        <h3>Register</h3>
-        <form action="{% url 'register' %}" method="post">
-            {% csrf_token %}
-            <label>Username</label>
-            <input type="text" required name="username" />
+    <body>
+        <div class="signup">
+            {% if message %}
+                <p class="text-danger">{{ message }}</p>
+            {% endif %}
+            <h3>Register</h3>
+            <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                <label>Username</label>
+                <input type="text" required name="username" />
 
-            <label>First Name</label>
-            <input type="text" required />
+                <label>First Name</label>
+                <input type="text" required />
 
-            <label>Last Name</label>
-            <input type="text" required>
+                <label>Last Name</label>
+                <input type="text" required>
 
-            <label>Email</label>
-            <input type="email" required name="email">
+                <label>Email</label>
+                <input type="email" required name="email">
 
-            <label>Password</label>
-            <input type="password" required name="password">
-            <label>Confirm Password</label>
-            <input type="password" required name="confirmation">
-            <br>
-            <label><strong>Location</strong></label>
-            <br>
-            <label>Latitude</label>
-            <input type="number" required name="lat" value="51.477928" step="any">
-
-            <label>Logitude</label>
-            <input type="number" required name="long" value="-0.001545" step="any">
-            <button type="submit" class="shadow-sm btn btn-dark">Register</button>
-        </form>
-        <p>Already registered? <a href="{% url 'login' %}">Log In</a></p>
+                <label>Password</label>
+                <input type="password" required name="password">
+                <label>Confirm Password</label>
+                <input type="password" required name="confirmation">
+                <div style="display:none;">
+                    <label><strong>Location</strong></label>
+                    <label>Latitude</label>
+                    <input type="number" required name="lat" value="51.477928" step="any">
+                    <label>Logitude</label>
+                    <input type="number" required name="long" value="-0.001545" step="any">
+                </div>
+                <br>
+                <button type="submit" class="shadow-sm btn btn-dark">Register</button>
+            </form>
+            <p>Already registered? <a href="{% url 'login' %}">Log In</a></p>
+        </div>
     </body>
 </html>
