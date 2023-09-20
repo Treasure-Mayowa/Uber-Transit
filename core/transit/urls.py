@@ -6,5 +6,7 @@ urlpatterns = [
     path("logout", views.logout_view, name="logout"),
     path("login", views.login_view, name="login"),
     path("register", views.register, name="register"),
-    path("dashboard", views.dashboard, name="dashboard")
+    path("driver/register", views.driver_register, name="driver-register"),
+    path("dashboard", views.dashboard, name="dashboard"),
+    path("driver/dashboard", views.driver_dashboard, name="driver-dashboard"),
 ]
