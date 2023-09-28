@@ -9,4 +9,5 @@ urlpatterns = [
     path("driver/register", views.driver_register, name="driver-register"),
     path("dashboard", views.dashboard, name="dashboard"),
     path("driver/dashboard", views.driver_dashboard, name="driver-dashboard"),
+    path("accessibility-guide", views.accessibility, name="accessibility-guide"),
 ]
