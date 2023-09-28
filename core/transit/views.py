@@ -164,16 +164,22 @@ def login_view(request):
         # Attempt to sign user in
         username = request.POST["username"]
         password = request.POST["password"]
+        type = request.POST["type"]
         user = authenticate(request, username=username, password=password)
 
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            try:
-                if Driver.objects.get(user=request.user).user.username != "":
-                    return HttpResponseRedirect(reverse("driver-dashboard"))
-            except Driver.DoesNotExist:
-                return HttpResponseRedirect(reverse("dashboard"))
+            if type == "driver":
+                try:
+                    if Driver.objects.get(user=request.user).user.username != "":
+                        return HttpResponseRedirect(reverse("driver-dashboard"))
+                except Driver.DoesNotExist:
+                    return render (request, "transit/login.html", {
+                "message": "Driver with such username does not exist"
+            })
+            else:
+                return HttpResponse(reverse("dashboard"))
         else:
             return render(request, "transit/login.html", {
                 "message": "Invalid username and/or password."
