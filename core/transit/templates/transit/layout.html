@@ -13,23 +13,22 @@
     <body>
         <nav>
             <div class="logo">
-                <a href="{% url 'index' %}"><h1>Uber Transit</h1></a>
+                <a href="{% url 'index' %}"><h1 style="color:white; text-decoration:none;">Uber Transit</h1></a>
             </div>
-            <div class="button">
+            <div class="nav-group">
                 {% if user.is_authenticated %}
                     {% if driver %}
                     <a href="{% url 'driver-dashboard' %}"><button class="btn btn-outline-dark shadow-sm">Dashboard</button></a> 
                     {% else %}
-                    <a href="{% url 'dashboard' %}"><button class="btn btn-secondary shadow-sm">Dashboard</button></a>
+                    <a href="{% url 'dashboard' %}"><button class="button-black">Dashboard</button></a>
                     {% endif %}
-                    <a href="{% url 'logout' %}"><button class="btn btn-btn-secondary rounded shadow-sm">Log Out</button></a>
+                    <a href="{% url 'logout' %}"><button class="button-white">Log Out</button></a>
                 {% else %}
-                    <a href="{% url 'login' %}"><button class="btn btn-secondary rounded shadow-sm">Log In</button></a>
-                    <a href="{% url 'register' %}"><button class="btn btn-light rounded shadow-sm">Sign Up</button></a>
+                    <a href="{% url 'login' %}"><button class="button-black">Log In</button></a>
+                    <a href="{% url 'register' %}"><button class="button-white">Sign Up</button></a>
                 {% endif %}
             </div>
         </nav>
-        <br>
         {% block body %}
         {% endblock %}
     </body>
