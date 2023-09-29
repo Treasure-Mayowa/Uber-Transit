@@ -114,8 +114,14 @@ def login_view(request):
                 "message": "Driver with such username does not exist"
             })
             else:
-                login(request, user)
-                return HttpResponseRedirect(reverse("dashboard"))
+                try:
+                    if Driver.objects.get(user=user).user.username != "":
+                        return render (request, "transit/login.html", {
+                            "message": "This username is currently registered as a driver not a rider"
+                        })
+                except Driver.DoesNotExist:   
+                    login(request, user)
+                    return HttpResponseRedirect(reverse("dashboard"))
         else:
             return render(request, "transit/login.html", {
                 "message": "Invalid username and/or password."
