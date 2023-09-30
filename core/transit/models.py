@@ -21,7 +21,7 @@ class Driver(models.Model):
     accessibility = models.TextField(default="Nil")
 
     def __str__(self):
-        return f"{self.user.username} at {self.location}"
+        return f"{self.user.username} at {self.user.location}"
     
 class Trips(models.Model):
     passengers = models.ManyToManyField(User)
