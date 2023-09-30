@@ -21,7 +21,7 @@
   src: url(UberMoveMedium.otf);
 }
 
-body {
+* {
   font-family: secFont;
 }
 
@@ -153,4 +153,15 @@ a:hover {
   padding: 10px;
   border: none;
   cursor: pointer;
+}
+#ride input[type=text], [type=number] {
+  width: 80%;
+  padding: 5px;
+  border-radius: 8px;
+}
+#ride button {
+  width: 80%;
+}
+h1:hover {
+  text-decoration: none;
 }
