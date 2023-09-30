@@ -1,5 +1,9 @@
 {% extends "transit/layout.html" %} 
+{% block title %} Log In - Uber Transit{% endblock title %} Log In - Uber Transit
 {% block body %}
+{% if user.is_authenticated %} 
+<p>You are currently logged in as {{ user.username }}
+{% else %}
     <div class="form">
         {% if message %}
             <p class="text-danger">{{ message }}</p>
@@ -15,10 +19,10 @@
             <label>Username</label>
             <input type="text" required name="username" />
             <label>Password</label>
-            <input type="text" required name="password" />
+            <input type="password" required name="password" />
             <br>
             <button type="submit">Log In</button>
         </form>
         <p>Don't have an account? <a href="{% url 'register' %}">Sign Up</a></p>
-    </div>
+    </div>{% endif %}
 {% endblock body %}
