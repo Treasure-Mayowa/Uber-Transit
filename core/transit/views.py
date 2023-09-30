@@ -27,7 +27,7 @@ def index(request):
         return render(request, "transit/index.html")
 
 def accessibility(request):
-    pass
+    return render(request, "transit/accessibility.html")
 
 
 @login_required
@@ -51,7 +51,9 @@ def dashboard(request):
         is_transit_empty = len(close_transits) == 0
 
         close_drivers = nearby_drivers(data["hits"][0]["point"]["lat"], data["hits"][0]["point"]["lng"])
+
         is_empty = len(close_drivers) == 0
+
         return render(request, "transit/dashboard.html", {
             "transits": transits, "close_transits": close_transits, "results": True, "close_drivers": close_drivers, "is_empty": is_empty, "is_transit": is_transit_empty
         })
@@ -84,7 +86,7 @@ def driver_dashboard(request):
         location = Location(latitude=lat, longitude=long)
         location.save()
         driver = Driver.objects.get(user=request.user)
-        driver.location = location
+        driver.user.location = location
         driver.available_seats = seats
         driver.save()
         return render(request, "transit/driver_dashboard.html", {
@@ -195,7 +197,7 @@ def driver_register(request):
                 "message": "Username already taken."
             })
         login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("driver-dashboard"))
     else:
         return render(request, "transit/driver_register.html")
 
