@@ -48,9 +48,9 @@ def nearby_drivers(start_lat, start_long):
     current_latitude_rad = radians(start_lat)
     current_longitude_rad = radians(start_long)
 
-    transit_locations = [i.user.location for i in Driver.objects.filter(available_seats__gt=0)]
+    driver_locations = [i.user.location for i in Driver.objects.filter(available_seats__gt=0)]
 
-    for location in transit_locations:
+    for location in driver_locations:
 
         # Convert the driver's location's latitude and longitude from degrees to radians
         location_latitude_rad = radians(location.latitude)
